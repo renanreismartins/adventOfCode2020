@@ -11,12 +11,12 @@ object InputParser {
 
 object ExpenseReport {
   @tailrec
-  def findEntryThatSum2020(allEntries: Seq[Int]): Option[Int] = {
+  def find2EntriesThatSum2020(allEntries: Seq[Int]): Option[Int] = {
     if (allEntries.isEmpty) return None
 
     val maybeSumUp2020 = allEntries.find(e => (e + allEntries.head) == 2020)
     maybeSumUp2020 match {
-      case None => findEntryThatSum2020(allEntries.tail)
+      case None => find2EntriesThatSum2020(allEntries.tail)
       case Some(r) => Some(r * allEntries.head)
     }
   }
