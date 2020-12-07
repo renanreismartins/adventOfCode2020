@@ -20,4 +20,11 @@ object ExpenseReport {
       case Some(r) => Some(r * allEntries.head)
     }
   }
+
+  def find3EntriesThatSum2020(allEntries: Seq[Int]): Option[Int] = {
+    val result = for (x <- allEntries;
+                      y <- allEntries;
+                      z <- allEntries if x + y + z == 2020) yield x * y * z
+    result.headOption
+  }
 }
