@@ -5,7 +5,11 @@ import scala.io.Source
 
 object InputParser {
   def parse(filePath: String): Seq[Int] = {
-    Source.fromURL(getClass.getResource(filePath)).getLines().map(_.toInt).toList // not sure if it is the best way to load a file in Scala.
+    // not sure if it is the best way to load a file in Scala.
+    Source.fromURL(getClass.getResource(filePath))
+      .getLines()
+      .map(_.toInt)
+      .toList
   }
 }
 
