@@ -26,14 +26,19 @@ object Day02 {
     range.contains(pass.count(_ == char))
   }
 
-  // Could make isValid receive a tuple or a type or some sort of partial technique?
-  def countValidPasswords(): Int =
-    input
-      .map(t => isValid(t._1, t._2, t._3))
-      .filter(_ == true)
-      .length
+  // Range does not express exactly what is needed to this function: two positions, maybe two Ints or a type Positions, too late now ;)
+  def isValidForTwoPositionsPolicy(range: Range.Inclusive, char: Char, pass: String): Boolean = {
+    val respectsFirstPosition = pass.charAt(range.start - 1) == char
+    val respectsSecondPosition = pass.charAt(range.end- 1) == char
+
+    respectsFirstPosition != respectsSecondPosition
+  }
+
+  def countValidPasswords(f: (Range.Inclusive, Char, String) => Boolean): Int =
+    input.count(t => f(t._1, t._2, t._3))
 
   def main(args: Array[String]): Unit = {
-    println(s"Answer: ${countValidPasswords}")
+    println(s"Answer Part 1: ${countValidPasswords(isValid)}")
+    println(s"Answer Part 2: ${countValidPasswords(isValidForTwoPositionsPolicy)}")
   }
 }
