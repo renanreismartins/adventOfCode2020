@@ -1,9 +1,7 @@
-package day01
-
-import day01.ExpenseReport.find2EntriesThatSum2020
+import ExpenseReport.find2EntriesThatSum2020
 import org.scalatest.flatspec.AnyFlatSpec
 
-class ExpenseReportTest extends AnyFlatSpec {
+class Day01 extends AnyFlatSpec {
   "The expense report" should "return None if there is just one entry in the list" in {
     assert(ExpenseReport.find2EntriesThatSum2020(Seq(2020)) == None)
 
@@ -24,13 +22,13 @@ class ExpenseReportTest extends AnyFlatSpec {
   }
 
   it should "return the multiplication of the numbers that sums up to 2020 for the input" in {
-    assert(find2EntriesThatSum2020(InputParser.parse("/day01/input.txt")) == Some(731731))
+    assert(find2EntriesThatSum2020(InputParser.parse("/input01.txt")) == Some(731731))
   }
 
   "The expense report" should "the multiplication of three numbers that sum up to 2020" in {
     assert(ExpenseReport.find3EntriesThatSum2020(Seq(2000, 10, 10)) == Some(200000))
   }
   it should "the multiplication of three numbers that sum up to 2020 for the input" in {
-    assert(ExpenseReport.find3EntriesThatSum2020(InputParser.parse("/day01/input.txt")) == Some(116115990))
+    assert(ExpenseReport.find3EntriesThatSum2020(InputParser.parse("/input01.txt")) == Some(116115990))
   }
 }
