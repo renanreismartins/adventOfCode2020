@@ -1,14 +1,15 @@
 import scala.io.Source
 
 object Day03 {
-  def countTrees(lines: Seq[String], stepsToRight: Int = 3) =
-    lines
-      .zipWithIndex
-      .count {
-        case (line, index) =>
-          val lineWidth = 31
-          isTree(line, (index * stepsToRight) % lineWidth)
-      }
+  def countTrees(lines: Seq[String], stepsToRight: Int = 3) = {
+    val lineWidth = lines(0).size
+      lines
+        .zipWithIndex
+        .count {
+          case (line, index) =>
+            isTree(line, (index * stepsToRight) % lineWidth)
+        }
+  }
 
   def isTree(line: String, x: Int) = line.charAt(x) == '#'
 
