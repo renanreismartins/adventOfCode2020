@@ -5,7 +5,9 @@ object Day03 {
     lines
       .zipWithIndex
       .count {
-        case (line, index) => isTree(line, (index * stepsToRight) % 31)
+        case (line, index) =>
+          val lineWidth = 31
+          isTree(line, (index * stepsToRight) % lineWidth)
       }
 
   def isTree(line: String, x: Int) = line.charAt(x) == '#'
