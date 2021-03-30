@@ -1,3 +1,4 @@
+import Day04.{isValid, parsePassports}
 import org.scalatest.flatspec.AnyFlatSpec
 
 class Day04Test extends AnyFlatSpec {
@@ -128,5 +129,15 @@ class Day04Test extends AnyFlatSpec {
       )
 
     assert(Day04.isValid(passport) == false)
+  }
+
+  "Valid Pass 1" should "should be valid" in {
+    val input =
+      """pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+        |hcl:#623a2f
+        |"""
+        .stripMargin
+
+    assert(parsePassports(input).count(isValid(_)) == 1)
   }
 }
