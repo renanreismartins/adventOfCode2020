@@ -26,9 +26,29 @@ object Day05 {
       .map(_.toCharArray.toSeq)
       .toSeq
 
-    val maxSeatId = input.map(seatId).max
+    val seats = input.map(seatId)
+    val maxSeatId = seats.max
 
-    println(s"answer: ${maxSeatId}")
+
+    val mySeat: Option[Int] = seats.foldLeft(Option.empty[Int]) {
+      case (None, id) if !seats.contains(id + 1) && seats.contains(id + 2) => Some(id + 1)
+      case (acc, _) => acc
+    }
+
+    val mySeat2 = seats
+      .sorted
+      .sliding(2)
+      .filter(e => e(0) + 1 != e(1))
+      .map {
+        case Seq(a, _) => Some(a + 1)
+        case _ => None
+      }
+      .next()
+
+
+    println(seats.filter(s => s == 90))
+    println(s"answer: $maxSeatId")
+    println(s"answer 2: $mySeat2")
 
   }
 
