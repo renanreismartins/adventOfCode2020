@@ -3,23 +3,23 @@ import scala.io.Source
 object Day06 {
 
   def main(args: Array[String]): Unit = {
-    /*val input =
-      """abc
-        |
-        |a
-        |b
-        |c
-        |
-        |ab
-        |ac
-        |
-        |a
-        |a
-        |a
-        |a
-        |
-        |b
-        |""".stripMargin*/
+//    val input =
+//      """abc
+//        |
+//        |a
+//        |b
+//        |c
+//        |
+//        |ab
+//        |ac
+//        |
+//        |a
+//        |a
+//        |a
+//        |a
+//        |
+//        |b
+//        |""".stripMargin
 
     val input = Source.fromFile("src/test/resources/input06.txt").mkString
 
@@ -34,6 +34,16 @@ object Day06 {
       .sum
 
     println(s"part 1: $part1")
+
+
+
+    val part2: Int = split.map(groups => groups.split("\n").map(groupLetters => groupLetters.split("")))
+                          .map(groups => groups.reduce((subGroup1, subGroup2) => subGroup1 intersect subGroup2) )
+                          .map(_.length).sum
+
+    println(s"part 2: $part2")
+
+
   }
 
   def lettersToMap(letters: Array[String]): Map[String, Int] = {
